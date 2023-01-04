@@ -57,7 +57,7 @@ ENV PUPPETSERVER_JAVA_ARGS="-Xms512m -Xmx512m" \
     PUPPET_REPORTS="puppetdb"
 
 # NOTE: This is just documentation on the expected port/protocol to use.
-#       The container can change this via ENV CA_MASTERPORT
+#       The container can change this via ENV CA_MASTERPORT PUPPET_MASTERPORT
 EXPOSE 8140/tcp
 
 # Install the repos and packages then
