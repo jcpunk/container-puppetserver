@@ -26,7 +26,7 @@ NOTE: There are known issues around the Mainline Linux kernel 5.6 - 5.10!
 The following environment variables are supported:
 
 | Name                                       | Default    | Usage
-|--------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **PUPPETSERVER_HOSTNAME**                  | UNSET      | The DNS name used on the masters SSL certificate - sets the `certname` and `server` in puppet.conf                                                    |
 | **DNS_ALT_NAMES**                          | UNSET      | Additional DNS names to add to the masters SSL certificate.<br> **Note** only effective on initial run when certificates are generated               |
 | **PUPPET_MASTERPORT**                      | `8140`     | The port of the puppet master                                                                                                                         |
