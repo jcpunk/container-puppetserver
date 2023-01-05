@@ -23,15 +23,15 @@ EOF
   ssl_crl_path=$(puppet config print hostcrl)
 
 
-  cd /etc/puppetlabs/puppetserver/conf.d/
-  hocon -f webserver.conf set webserver.ssl-cert $ssl_cert
-  hocon -f webserver.conf set webserver.ssl-key $ssl_key
-  hocon -f webserver.conf set webserver.ssl-ca-cert $ssl_ca_cert
-  hocon -f webserver.conf set webserver.ssl-crl-path $ssl_crl_path
+  cd /etc/puppetlabs/puppetserver/conf.d/ || echo "unable to /etc/puppetlabs/puppetserver/conf.d/" && exit 1
+  hocon -f webserver.conf set webserver.ssl-cert "${ssl_cert}"
+  hocon -f webserver.conf set webserver.ssl-key "${ssl_key}"
+  hocon -f webserver.conf set webserver.ssl-ca-cert "${ssl_ca_cert}"
+  hocon -f webserver.conf set webserver.ssl-crl-path "${ssl_crl_path}"
   cd /
 
   # bootstrap certs for the puppetserver
-  if [[ ! -f "$ssl_cert" ]]; then
+  if [[ ! -f "${ssl_cert}" ]]; then
     while ! ca_running; do
       sleep 1
     done

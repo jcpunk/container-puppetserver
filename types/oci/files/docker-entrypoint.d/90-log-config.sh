@@ -5,7 +5,7 @@ localcacert=$(puppet config print localcacert)
 
 ### Print configuration for troubleshooting
 echo "System configuration values:"
-# shellcheck disable=SC2039 # Docker injects $HOSTNAME
+# shellcheck disable=SC3028 # Docker injects $HOSTNAME
 echo "* HOSTNAME: '${HOSTNAME}'"
 echo "* hostname -f: '$(hostname -f)'"
 echo "* PUPPETSERVER_HOSTNAME: '${PUPPETSERVER_HOSTNAME}'"
@@ -26,5 +26,5 @@ fi
 if [ -f "${hostpubkey}" ]; then
   echo "* Host Certificate Details:"
   # shellcheck disable=SC2086 # $altnames shouldn't be quoted
-  su puppet -s /bin/sh -c "openssl x509 -subject -issuer -text -noout -in '${SSLDIR}/certs/${certname}' ${altnames}"
+  su puppet -s /bin/sh -c "openssl x509 -subject -issuer -text -noout -in '${hostpubkey}' ${altnames}"
 fi

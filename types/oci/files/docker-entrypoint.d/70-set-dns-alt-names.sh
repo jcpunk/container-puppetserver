@@ -8,7 +8,7 @@ if [ -n "${DNS_ALT_NAMES}" ] && [ "${CA_ENABLED}" != "true" ]; then
     if test ! -f "${SSLDIR}/certs/$certname.pem" ; then
         puppet config set dns_alt_names "${DNS_ALT_NAMES}" --section agent
     else
-        actual=$(puppet config print dns_alt_names --section "${config_section}")
+        actual=$(puppet config print dns_alt_names)
         if test "${DNS_ALT_NAMES}" != "${actual}" ; then
             echo "Warning: DNS_ALT_NAMES has been changed from the value in puppet.conf"
             echo "         Remove/revoke the old certificate for this to become effective"

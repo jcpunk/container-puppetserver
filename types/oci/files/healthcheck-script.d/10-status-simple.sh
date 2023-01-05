@@ -14,7 +14,7 @@ localcacert=$(puppet config print localcacert)
 
 curl --fail \
     --no-progress-meter \
-    --max-time ${timeout} \
+    --max-time "${timeout}" \
     --resolve "${HOSTNAME}:${PUPPET_MASTERPORT}:127.0.0.1" \
     --cert    "${hostpubkey}" \
     --key     "${hostprivkey}" \

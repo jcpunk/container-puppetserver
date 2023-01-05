@@ -5,7 +5,7 @@
 # default
 TEMPLATES=/var/tmp/puppet
 
-cd /etc/puppetlabs/puppet
+cd /etc/puppetlabs/puppet || echo "unable to cd /etc/puppetlabs/puppet" && exit 1
 for f in auth.conf hiera.yaml puppet.conf puppetdb.conf
 do
     test -f "$TEMPLATES/$f" && cp -np "$TEMPLATES/$f" .
